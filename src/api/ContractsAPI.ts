@@ -24,7 +24,7 @@ import {
   utils,
   Event,
   BigNumber as EthersBN,
-} from 'ethers';
+} from 'ethers-wan-5';
 import _ from 'lodash';
 
 import {
@@ -289,7 +289,7 @@ class TxExecutor extends EventEmitter {
             if (balance < this.MIN_BALANCE_ETH) {
               const notifsManager = NotificationManager.getInstance();
               notifsManager.balanceEmpty();
-              throw new Error('xDAI balance too low!');
+              throw new Error('WAN balance too low!');
             }
 
             if (
@@ -898,7 +898,7 @@ class ContractsAPI extends EventEmitter {
 
     const contract = this.coreContract;
     // break constant calls up into two Promise.all()s
-    // xDAI endpoint less likely to freak out
+    // WAN endpoint less likely to freak out
     const res1 = await Promise.all([
       callWithRetry<EthersBN>(contract.TIME_FACTOR_HUNDREDTHS),
       callWithRetry<EthersBN>(contract.PERLIN_THRESHOLD_1),

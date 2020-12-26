@@ -1,4 +1,4 @@
-import { BigNumber as EthersBN } from 'ethers';
+import { BigNumber as EthersBN } from 'ethers-wan-5';
 import {
   ArtifactId,
   EthAddress,

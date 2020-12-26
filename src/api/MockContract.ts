@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { Listener, TransactionReceipt } from '@ethersproject/providers';
-import { BigNumber as EthersBN } from 'ethers';
+import { Listener, TransactionReceipt } from '@wansproject/providers';
+import { BigNumber as EthersBN } from 'ethers-wan-5';
 import io from 'socket.io-client';
 import {
   MockchainEvents,

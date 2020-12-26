@@ -1,5 +1,5 @@
 import * as stringify from 'json-stable-stringify';
-import { JsonRpcProvider, TransactionReceipt } from '@ethersproject/providers';
+import { JsonRpcProvider, TransactionReceipt } from '@wansproject/providers';
 import {
   providers,
   Contract,
@@ -7,7 +7,7 @@ import {
   utils,
   ContractInterface,
   BigNumber,
-} from 'ethers';
+} from 'ethers-wan-5';
 import { EthAddress } from '../_types/global/GlobalTypes';
 import { address } from '../utils/CheckedTypeUtils';
 import { EventEmitter } from 'events';
@@ -15,9 +15,7 @@ import { XDAI_CHAIN_ID } from '../utils/constants';
 import { callWithRetry, sleep } from '../utils/Utils';
 
 // rpc-df only has CORS enabled for zkga.me, not localhost
-const XDAI_DEFAULT_URL = window.origin.includes('localhost')
-  ? 'https://rpc.xdaichain.com/'
-  : 'https://rpc-df.xdaichain.com/';
+const XDAI_DEFAULT_URL = 'https://gwan-ssl.wandevs.org:46891';
 
 class EthereumAccountManager extends EventEmitter {
   static instance: EthereumAccountManager | null = null;
@@ -65,7 +63,7 @@ class EthereumAccountManager extends EventEmitter {
       const newProvider = new providers.JsonRpcProvider(this.rpcURL);
       if (process.env.NODE_ENV === 'production') {
         if ((await newProvider.getNetwork()).chainId !== XDAI_CHAIN_ID) {
-          throw new Error('not a valid xDAI RPC URL');
+          throw new Error('not a valid WAN RPC URL');
         }
       }
       this.provider = newProvider;
@@ -103,7 +101,7 @@ class EthereumAccountManager extends EventEmitter {
     const isProd = process.env.NODE_ENV === 'production';
     const contractAddress = isProd
       ? require('../utils/prod_contract_addr').contractAddress
-      : require('../utils/local_contract_addr').contractAddress;
+      : require('../utils/prod_contract_addr').contractAddress;
 
     return this.loadContract(contractAddress, contractABI);
   }
@@ -178,7 +176,7 @@ class EthereumAccountManager extends EventEmitter {
       let receipt = null;
       let tries = 0;
 
-      // waitForTransaction tends to hang on xDAI. but if we have a txHash
+      // waitForTransaction tends to hang on WAN. but if we have a txHash
       // the tx WILL get confirmed (or reverted) eventually, so for sure
       // just keep retrying
       while (!receipt) {

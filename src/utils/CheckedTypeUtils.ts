@@ -6,7 +6,7 @@ import {
 import * as bigInt from 'big-integer';
 import { LOCATION_ID_UB } from './constants';
 import { BigInteger } from 'big-integer';
-import { BigNumber as EthersBN } from 'ethers';
+import { BigNumber as EthersBN } from 'ethers-wan-5';
 import mimcHash from '../miner/mimc';
 import { WorldCoords } from './Coordinates';
 

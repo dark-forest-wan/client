@@ -105,16 +105,16 @@ export function HatPane({ hook }: { hook: ModalHook }) {
         <div className='margin-top'>
           <Sub>Next Level Cost</Sub>
           <span>
-            {getCost()} USD <Sub>/</Sub> {getCost()} DAI
+            {getCost()} WAN
           </span>
         </div>
         <div>
           <Sub>Current Balance</Sub>
-          <span>{balance} xDAI</span>
+          <span>{balance} WAN</span>
         </div>
         <div>
-          <a onClick={() => window.open('https://blog.zkga.me/df-04-faq')}>
-            <u>Get More xDAI</u>
+          <a onClick={() => window.open('https://www.binance.com/')}>
+            <u>Get More WAN</u>
           </a>
         </div>
         <div>

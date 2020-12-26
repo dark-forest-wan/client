@@ -1,2 +1,2 @@
-export const contractAddress = '0x678ACb78948Be7F354B28DaAb79B1ABD81574c1B';
-export const tokensContract = '0x5cFbC3e179C48ccB3B3d35bAD6361972F2C5603B';
+export const contractAddress = '0x02023d3B3cfA2bB824bC8ED5195BA69283ceCD6f';
+export const tokensContract = '0x23A9f34aa1e45f9E191A6615d24A781607a1bcb1';

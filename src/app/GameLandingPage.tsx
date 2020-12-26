@@ -29,7 +29,7 @@ import {
   TerminalToggler,
 } from './GameLandingPageComponents';
 import UIEmitter, { UIEmitterEvent } from '../utils/UIEmitter';
-import { utils, Wallet } from 'ethers';
+import { utils, Wallet } from 'ethers-wan-5';
 import EthereumAccountManager from '../api/EthereumAccountManager';
 import { address } from '../utils/CheckedTypeUtils';
 import { UIDataKey, useStoredUIState } from '../api/UIStateStorageManager';
@@ -196,10 +196,10 @@ export default function GameLandingPage(_props: { replayMode: boolean }) {
       TerminalTextStyle.Blue
     );
 
-    terminalEmitter.print('Connecting to Ethereum L2');
+    terminalEmitter.print('Connecting to Wanchain Mainnet');
     await animEllipsis();
     terminalEmitter.print(' ');
-    terminalEmitter.println('Connected to xDAI STAKE.', TerminalTextStyle.Blue);
+    terminalEmitter.println('Connected to WAN STAKE.', TerminalTextStyle.Blue);
 
     terminalEmitter.print('Installing flux capacitor');
     await animEllipsis();
@@ -272,11 +272,11 @@ export default function GameLandingPage(_props: { replayMode: boolean }) {
       TerminalTextStyle.White
     );
     terminalEmitter.newline();
-    terminalEmitter.print('Falling back to L2');
+    terminalEmitter.print('Falling back to Wanchain Mainnet');
     await animEllipsis();
     terminalEmitter.print(' ');
     terminalEmitter.println(
-      'Connected to xDAI L2 network.',
+      'Connected to WAN Wanchain Mainnet network.',
       TerminalTextStyle.White
     );
 
@@ -468,7 +468,8 @@ export default function GameLandingPage(_props: { replayMode: boolean }) {
     const ethConnection = EthereumAccountManager.getInstance();
 
     const address = ethConnection.getAddress();
-    const isWhitelisted = await isAddressWhitelisted(address);
+    // const isWhitelisted = await isAddressWhitelisted(address);
+    const isWhitelisted = true;
 
     terminalEmitter.bashShell('df join v0.4');
     terminalEmitter.print('Checking if whitelisted... (address ');
@@ -628,7 +629,7 @@ export default function GameLandingPage(_props: { replayMode: boolean }) {
     const terminalEmitter = TerminalEmitter.getInstance();
 
     terminalEmitter.println(
-      'Downloading data from Ethereum blockchain... (the contract is very big. this may take a while)'
+      'Downloading data from Wanchain Mainnet blockchain... (the contract is very big. this may take a while)'
     );
 
     let newGameManager: AbstractGameManager;
